@@ -13,10 +13,9 @@ extern keymap_config_t keymap_config;
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _COLEMAK 0
-#define _QWERTY 1
-#define _DVORAK 2
-#define _XELOMAK 3
+#define _XELOMAK 0
+#define _COLEMAK 1
+#define _QWERTY 2
 // #define _RGBLED 4
 // #define _V60 5
 #define _MSTK 6
@@ -25,23 +24,14 @@ extern keymap_config_t keymap_config;
 #define _ADJUST 21
 
 enum custom_keycodes {
-  COLEMAK = SAFE_RANGE,
+  XELOMAK = SAFE_RANGE,
+  COLEMAK,
   QWERTY,
-  DVORAK,
-  // RGBLED,
   MSTK,
   LOWER,
   RAISE,
   ADJUST,
   BACKLIT,
-  // RGBLED_TOGGLE,
-  // RGBLED_STEP_MODE,
-  // RGBLED_INCREASE_HUE,
-  // RGBLED_DECREASE_HUE,
-  // RGBLED_INCREASE_SAT,
-  // RGBLED_DECREASE_SAT,
-  // RGBLED_INCREASE_VAL,
-  // RGBLED_DECREASE_VAL,
 };
 
 
@@ -50,7 +40,12 @@ enum custom_keycodes {
 #define XXXXXXX KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
+[_XELOMAK] = KEYMAP( \
+  KC_Q,    KC_W,    KC_G,    KC_D,          KC_F,         KC_LBRC,KC_RBRC, KC_J,              KC_L,       KC_U,     KC_Y,     KC_SCLN, \
+  KC_S,    KC_A,    KC_O,    KC_T,          KC_K,         KC_MINS,KC_EQL,  KC_R,              KC_N,       KC_E,     KC_I,     KC_H,    \
+  KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,         KC_GRV, KC_QUOT, KC_P,              KC_M,       KC_COMM,  KC_DOT,   KC_SLSH, \
+  LOWER,   _______, KC_LGUI, CTL_T(KC_F23), SFT_T(KC_SPC),KC_BSPC,KC_TAB,  LT(_MSTK,KC_ENT),  ALT_T(KC_F24), _______,  _______,  RAISE   \
+),
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
  * |   Q  |   W  |   F  |   P  |   G  |  [   |  ]   |   J  |   L  |   U  |   Y  |   ;  |
@@ -86,26 +81,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT , \
   _ADJUST, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
 ),
-
-/* Dvorak
- * ,-----------------------------------------------------------------------------------.
- * | Tab  |   "  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- */
-[_DVORAK] = KEYMAP( \
-  KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_BSPC, \
-  KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH, \
-  KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT , \
-  ADJUST,  KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT \
-),
-
-
 /* MSTK
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      |      |      |      |
@@ -135,10 +110,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = KEYMAP( \
   LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), _______,  KC_JYEN,  LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),\
-  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,    _______,   KC_RO,  KC_DEL,   KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, \
+  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_ESC,    KC_RO,  KC_DEL,   KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, \
   KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,    KC_F12,   KC_BSLS,  KC_HOME,  KC_PGDN, KC_PGUP, KC_END, \
   _______,  _______, _______, _______, _______, _______,    _______,  _______,  KC_PSCR,  KC_SLCK, KC_PAUS, _______ \
 ),
+
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      |      |      |      |      |RGBLED|      |      |      |  Del |
@@ -152,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  KEYMAP( \
   RESET,  _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,DEBUG,    \
-  KC_MUTE,KC_MPRV,KC_MPLY,KC_MNXT,_______,_______,_______,COLEMAK,QWERTY, _______,_______,_______,  \
+  KC_MUTE,KC_MPRV,KC_MPLY,KC_MNXT,_______,_______,_______,XELOMAK,COLEMAK,QWERTY, _______,_______,  \
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,  \
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______   \
 )
@@ -176,6 +152,12 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case XELOMAK:
+      if (record->event.pressed) {
+        persistent_default_layer_set(1UL<<_XELOMAK);
+      }
+      return false;
+      break;
     case COLEMAK:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_COLEMAK);
@@ -185,12 +167,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case QWERTY:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<_QWERTY);
-      }
-      return false;
-      break;
-    case DVORAK:
-      if (record->event.pressed) {
-        persistent_default_layer_set(1UL<<_DVORAK);
       }
       return false;
       break;

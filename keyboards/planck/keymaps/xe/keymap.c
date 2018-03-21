@@ -20,6 +20,7 @@
  extern keymap_config_t keymap_config;
 
 enum planck_layers {
+  _XELOMAK,
   _COLEMAK,
   _QWERTY,
   _MSTK,
@@ -29,7 +30,8 @@ enum planck_layers {
 };
 
 enum planck_keycodes {
-  COLEMAK = SAFE_RANGE,
+  XELOMAK = SAFE_RANGE,
+  COLEMAK,
   QWERTY,
   MSTK,
   LOWER,
@@ -42,7 +44,12 @@ enum planck_keycodes {
 #define XXXXXXX KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
+[_XELOMAK] = KEYMAP( \
+  KC_Q,    KC_W,    KC_G,    KC_D,          KC_F,         KC_LBRC,KC_RBRC, KC_J,              KC_L,       KC_U,     KC_Y,     KC_SCLN, \
+  KC_S,    KC_A,    KC_O,    KC_T,          KC_K,         KC_MINS,KC_EQL,  KC_R,              KC_N,       KC_E,     KC_I,     KC_H,    \
+  KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,         KC_GRV, KC_QUOT, KC_P,              KC_M,       KC_COMM,  KC_DOT,   KC_SLSH, \
+  LOWER,   _______, KC_LGUI, CTL_T(KC_F23), SFT_T(KC_SPC),KC_BSPC,KC_TAB,  LT(_MSTK,KC_ENT),  ALT_T(KC_F24), _______,  _______,  RAISE   \
+),
 /* Colemak
  * ,-----------------------------------------------------------------------------------.
  * |   Q  |   W  |   F  |   P  |   G  |  [   |  ]   |   J  |   L  |   U  |   Y  |   ;  |
@@ -60,24 +67,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,         KC_GRV,  KC_QUOT, KC_K,              KC_M,       KC_COMM,  KC_DOT,   KC_SLSH, \
   LOWER,   _______, KC_LGUI, CTL_T(KC_F23), SFT_T(KC_SPC),KC_BSPC, KC_TAB,  LT(_MSTK,KC_ENT),  ALT_T(KC_F24), _______,  _______,  RAISE   \
 ),
-/* Colemak-ja
- * ,-----------------------------------------------------------------------------------.
- * |   Q  |   W  |   F  |   P  |   G  |  [   |  ]   |   J  |   L  |   U  |   Y  |   ;  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   A  |   R  |   S  |   T  |   D  |  -   |  =   |   H  |   N  |   E  |   I  |   O  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   Z  |   X  |   C  |   V  |   B  |  `   |  '   |   K  |   M  |   ,  |   .  |   /  |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Adjust| Ctrl | Alt  | GUI  |Lower |Space |Space |Raise | Left | Down |  Up  |Right |
- * `-----------------------------------------------------------------------------------'
- *
-[_COLEMAKja] = KEYMAP(\
-  KC_Q,    KC_W,    KC_F,    KC_P,          KC_G,         KC_RBRC, KC_BSLS, KC_J,              KC_L,       KC_U,     KC_Y,     KC_SCLN, \
-  KC_A,    KC_R,    KC_S,    KC_T,          KC_D,         KC_MINS, KC_EQL,  KC_H,              KC_N,       KC_E,     KC_I,     KC_O,    \
-  KC_Z,    KC_X,    KC_C,    KC_V,          KC_B,         KC_RO,   KC_QUOT, KC_K,              KC_M,       KC_COMM,  KC_DOT,   KC_SLSH, \
-  LOWER,   _______, KC_LGUI, CTL_T(KC_F23), SFT_T(KC_SPC),KC_BSPC, KC_TAB,  LT(_MSTK,KC_ENT),  ALT_T(KC_F24),_______,_______,  RAISE   \
-),
-*/
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
@@ -144,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = KEYMAP( \
   LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), _______,  KC_JYEN,  LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0),\
-  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,    _______,   KC_RO,  KC_DEL,   KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, \
+  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_ESC,    KC_RO,  KC_DEL,   KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, \
   KC_F6,    KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,    KC_F12,   KC_BSLS,  KC_HOME,  KC_PGDN, KC_PGUP, KC_END, \
   _______,  _______, _______, _______, _______, _______,    _______,  _______,  KC_PSCR,  KC_SLCK, KC_PAUS, _______ \
 ),
@@ -162,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] =  KEYMAP( \
   RESET,  _______,_______,_______,_______,AU_ON,  AU_OFF, _______,_______,_______,_______,DEBUG,    \
-  KC_MUTE,KC_MPRV,KC_MPLY,KC_MNXT,_______,MI_ON,  MI_OFF, COLEMAK,QWERTY, _______,_______,_______,  \
+  KC_MUTE,KC_MPRV,KC_MPLY,KC_MNXT,_______,MI_ON,  MI_OFF, XELOMAK,COLEMAK,QWERTY, _______,_______,  \
   _______,_______,_______,MUV_DE, MUV_IN, MU_ON,  MU_OFF, _______,_______,_______,_______,_______,  \
   _______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______,_______   \
 )
@@ -194,6 +183,12 @@ void persistent_default_layer_set(uint16_t default_layer) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case XELOMAK:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_XELOMAK);
+      }
+      return false;
+      break;
     case COLEMAK:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
