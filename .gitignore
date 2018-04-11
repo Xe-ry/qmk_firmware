@@ -23,6 +23,7 @@ quantum/version.h
 .idea/
 CMakeLists.txt
 cmake-build-debug
+doxygen/
 .DS_STORE
 /util/wsl_downloaded
 /util/win_downloaded
@@ -66,4 +67,7 @@ util/Win_Check_Output.txt
 secrets.tar
 id_rsa_*
 /.vs
+<<<<<<< HEAD
 keyboards/helix/rev2/keymaps/xe/ja_example.md
+=======
+>>>>>>> upstream/master
