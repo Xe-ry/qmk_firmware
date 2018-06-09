@@ -95,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   */
 
   [_MSTK] = KEYMAP( \
-    _______,  _______,  _______,  _______,  _______,  _______,                        _______,  _______,    KC_MINS,KC_EQL,     KC_JYEN,  _______, \
-    _______,  _______,  KC_WH_U,  KC_MS_U,  KC_WH_D,  _______,                        _______,  _______,    KC_7,   KC_8,       KC_9,   LSFT(KC_SCLN),  \
-    _______,  KC_ACL0,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_MINS,                        KC_EQL,   LSFT(KC_9), KC_4,   KC_5,       KC_6,   LSFT(KC_0), \
-    _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT, KC_GRV,   _______,  _______,    KC_QUOT,  KC_LBRC,    KC_1,   KC_2,       KC_3,   KC_RBRC,   \
-    _______,  _______,  _______,  _______,  KC_BTN3,  KC_BTN1,  KC_BTN2,  _______,    _______,  _______,    KC_0,   KC_COMM,    KC_DOT, KC_MINS   \
+    _______,  _______,  _______,  _______,  _______,  _______,                        _______,    KC_MINS,KC_EQL,     KC_JYEN,  _______, _______,  \
+    _______,  _______,  KC_WH_U,  KC_MS_U,  KC_WH_D,  _______,                        _______,    KC_7,   KC_8,       KC_9,   LSFT(KC_SCLN),  _______,  \
+    _______,  KC_ACL0,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_MINS,                        LSFT(KC_9), KC_4,   KC_5,       KC_6,   LSFT(KC_0), KC_EQL,   \
+    _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT, KC_GRV,   _______,  _______,    KC_LBRC,    KC_1,   KC_2,       KC_3,   KC_RBRC,   KC_QUOT,  \
+    _______,  _______,  _______,  _______,  KC_BTN3,  KC_BTN1,  KC_BTN2,  _______,    _______,    KC_0,   KC_COMM,    KC_DOT, KC_MINS,  _______   \
   ),
   /* Lower
    * ,-----------------------------------------.             ,-----------------------------------------.
@@ -181,19 +181,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_COLEMAK] = KEYMAP( \
-      KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,             KC_G,                            KC_J,             KC_L,            KC_U,   KC_Y,    KC_SCLN, KC_BSPC, \
+      KC_GRV,  KC_Q,    KC_W,    KC_F,    KC_P,             KC_G,                            KC_J,             KC_L,            KC_U,   KC_Y,    KC_SCLN, KC_BSLS, \
       KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,             KC_D,                            KC_H,             KC_N,            KC_E,   KC_I,    KC_O,    KC_QUOT, \
-      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,             KC_B,                            KC_K,             KC_M,            KC_COMM,KC_DOT,  KC_SLSH, KC_ENT , \
+      KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,             KC_B,                            KC_K,             KC_M,            KC_COMM,KC_DOT,  KC_SLSH, KC_RO, \
       LOWER,   KC_ESC,  KC_LGUI, KC_F23,  TD(TD_CTRL_F23),  SFT_T(KC_SPC), KC_BSPC, KC_TAB,  LT(_MSTK,KC_ENT), TD(TD_ALT_F24),  KC_F24, _______, KC_PSCR, RAISE \
       ),
 
   /* MSTK
   */
-  [_MSTK] = KEYMAP( \
+  /*[_MSTK] = KEYMAP( \
     _______,  _______,  KC_WH_U,  KC_MS_U,  KC_WH_D,  _______,                        _______,    KC_7, KC_8,     KC_9,   LSFT(KC_SCLN),  _______, \
-    _______,  KC_ACL0,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_MINS,                        LSFT(KC_9), KC_4, KC_5,     KC_6,   LSFT(KC_0),     KC_EQL,  \
-    _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT, KC_GRV,                         KC_LBRC,    KC_1, KC_2,     KC_3,   KC_RBRC,        KC_QUOT, \
+    _______,  KC_ACL0,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_MINS,                        LSFT(KC_9), KC_4, KC_5,     KC_6,   LSFT(KC_0),     _______,  \
+    _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT, KC_GRV,                         KC_LBRC,    KC_1, KC_2,     KC_3,   KC_RBRC,        _______, \
     _______,  _______,  _______,  _______,  KC_BTN3,  KC_BTN1,  KC_BTN2,  _______,    _______,    KC_0, KC_COMM,  KC_DOT, KC_MINS,        _______  \
+  ),*/
+  [_MSTK] = KEYMAP( \
+    _______,  _______,  _______,  _______,  _______,  _______,                        _______,    KC_7, KC_8,     KC_9,   LSFT(KC_SCLN),  _______, \
+    _______,  KC_LBRC,  KC_MINS,  KC_EQL,   KC_RBRC,  _______,                        LSFT(KC_9), KC_4, KC_5,     KC_6,   LSFT(KC_0),     KC_EQL,  \
+    _______,  KC_LEFT,  KC_UP,    KC_DOWN,  KC_RIGHT, KC_GRV,                         KC_LBRC,    KC_1, KC_2,     KC_3,   KC_RBRC,        KC_QUOT, \
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,    KC_0, KC_COMM,  KC_DOT, KC_MINS,        _______  \
   ),
 
   /* Lower
@@ -210,8 +216,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_LOWER] = KEYMAP( \
       KC_TILD, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,     KC_7,     KC_8,    KC_9,    KC_0,     KC_JYEN, \
       KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_DEL,   KC_LEFT,  KC_DOWN, KC_UP,   KC_RIGHT, KC_RO, \
-      _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                     KC_BSLS,  KC_HOME,  KC_PGDN, KC_PGUP, KC_END,   _______, \
-      _______, KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______,  KC_PSCR, KC_SLCK, KC_PAUS,  _______,  _______ \
+      _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                    KC_BSLS,  KC_HOME,  KC_PGDN, KC_PGUP, KC_END,   _______, \
+      _______, KC_F11,  KC_F12,  _______, _______, _______, KC_DEL,  _______, _______,  KC_PSCR, KC_SLCK, KC_PAUS,  _______,  _______ \
       ),
 
   /* Raise
@@ -244,7 +250,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `-------------------------------------------------------------------------------------------------'
    */
   [_ADJUST] =  KEYMAP( \
-      _______, RESET,   RGBRST,  _______, _______, _______,                   _______, _______, _______, _______, _______, KC_DEL, \
+      KC_ESC,  _______, _______, _______, RGBRST,  RESET,                     _______, KC_MINS, KC_EQL,  KC_JYEN, _______, KC_DEL, \
       _______, _______, _______, AU_ON,   AU_OFF,  AG_NORM,                   AG_SWAP, _______, COLEMAK, _______, _______, _______, \
       _______, _______, _______, _______, _______, _______,                   _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______, \
       _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_SMOD,RGB_HUD, RGB_SAD, RGB_VAD, _______ \
@@ -311,7 +317,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
           TOG_STATUS = !TOG_STATUS;
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode(16);
+            // rgblight_mode(16);
           #endif
         }
         layer_on(_LOWER);
@@ -334,7 +340,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         } else {
           TOG_STATUS = !TOG_STATUS;
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode(15);
+            // rgblight_mode(15);
           #endif
         }
         layer_on(_RAISE);
@@ -465,12 +471,12 @@ void matrix_update(struct CharacterMatrix *dest,
 #define L_BASE 0
 #define L_LOWER 8
 #define L_RAISE 16
+#define L_ADJUST 56
 #define L_FNLAYER 64
 #define L_NUMLAY 128
 #define L_NLOWER 136
 #define L_NFNLAYER 192
 #define L_MOUSECURSOR 256
-#define L_ADJUST 65536
 #define L_ADJUST_TRI 65560
 
 static void render_logo(struct CharacterMatrix *matrix) {

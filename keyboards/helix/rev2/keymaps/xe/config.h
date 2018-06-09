@@ -41,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef RGBLED_NUM
 /* Select rows configuration */
 // Rows are 4 or 5
-#define HELIX_ROWS 5
+#define HELIX_ROWS 4
 
 /* key matrix size */
 // Rows are doubled-up
